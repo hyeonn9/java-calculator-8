@@ -14,9 +14,9 @@ public class Application {
         String[] inputSplit = new String[input.length()];
 
         if(cal.isCustom(input)){
-
+            inputSplit = cal.splitCustom(input);
         } else{
-
+            inputSplit = cal.splitCommon(input);
         }
 
     }
@@ -29,6 +29,24 @@ public class Application {
             }
             return false;
         }
+
+        //기본 구분자 처리
+        public String[] splitCommon(String input){
+            String[] splitInput = input.split(",|:");
+
+            return splitInput;
+        }
+
+        // 커스텀 구분자 처리
+        public String[] splitCustom(String input){
+            String[] parts = input.split("\\\\n"); // //; , 1;2;3
+            String delimiter = parts[0].substring(2); ;
+
+            String[] splitInput = parts[1].split(delimiter); //1,2,3
+
+            return splitInput;
+        }
+
 
     }
 }
