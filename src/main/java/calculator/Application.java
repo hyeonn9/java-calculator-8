@@ -65,6 +65,12 @@ public class Application {
             int[] numbers = new int[input.length];
 
             for(int i=0; i<input.length; i++){
+
+                if(input[i].isEmpty()){
+                    numbers[i] =0;
+                    continue;
+                }
+
                 try{
                     int n = Integer.parseInt(input[i]);
                 } catch(NumberFormatException e) {
