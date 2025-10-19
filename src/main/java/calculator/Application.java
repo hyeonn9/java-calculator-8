@@ -19,6 +19,9 @@ public class Application {
             inputSplit = cal.splitCommon(input);
         }
 
+        int[] numberSplit = new int[inputSplit.length];
+        numberSplit = cal.convertIntArray(inputSplit);
+        System.out.println("결과 : " + cal.add(numberSplit));
     }
 
     public static class Calculator {
@@ -57,6 +60,26 @@ public class Application {
             return result;
         }
 
+        // 잘못된 값 오류 처리 - 문자열을 추출하고 난 뒤 검사
+        public int[] convertIntArray(String[] input){
+            int[] numbers = new int[input.length];
+
+            for(int i=0; i<input.length; i++){
+                try{
+                    int n = Integer.parseInt(input[i]);
+                } catch(NumberFormatException e) {
+                    throw new IllegalArgumentException();
+                }
+
+                int n = Integer.parseInt(input[i]);
+                if(n <0){
+                    throw new IllegalArgumentException();
+                }
+
+                numbers[i] = n;
+            }
+            return numbers;
+        }
 
     }
 }
