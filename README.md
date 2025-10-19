@@ -36,9 +36,9 @@ chore: 빌드, 설정, 패키지 등 수정
 ```
 
 ## 구현해야 할 기능 목록
-- [ ] 커스텀 여부 확인 - boolean isCustom(String input)
-- [ ] 기본 구분자 추출 - String[] splitCommon(String input)
-- [ ] 커스텀 구분자 추출 - String[] splitCustom(String input)
-- [ ] 잘못된 값 입력시(음수, 문자 등) 예외 처리 - int[] convertIntArray(String[] input)
-- [ ] 덧셈 처리 - int add(int[] numbers) 
-- [ ] 단위 테스트 통과 `gradlew.bat clean test`
+- [x] 커스텀 여부 확인 - boolean isCustom(String input)
+- [x] 기본 구분자 추출 - String[] splitCommon(String input)
+- [x] 커스텀 구분자 추출 - String[] splitCustom(String input)
+- [x] 잘못된 값 입력시(음수, 문자 등) 예외 처리 - int[] convertIntArray(String[] input)
+- [x] 덧셈 처리 - int add(int[] numbers) 
+- [x] 단위 테스트 통과 `gradlew.bat clean test`
