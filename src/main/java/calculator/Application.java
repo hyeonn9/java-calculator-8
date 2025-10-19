@@ -13,6 +13,11 @@ public class Application {
 
         String[] inputSplit = new String[input.length()];
 
+        if (input == null || input.trim().isEmpty()) {
+            System.out.println("결과 : 0");
+            return;
+        }
+
         if(cal.isCustom(input)){
             inputSplit = cal.splitCustom(input);
         } else{
@@ -65,11 +70,6 @@ public class Application {
             int[] numbers = new int[input.length];
 
             for(int i=0; i<input.length; i++){
-
-                if(input[i].isEmpty()){
-                    numbers[i] =0;
-                    continue;
-                }
 
                 try{
                     int n = Integer.parseInt(input[i]);
