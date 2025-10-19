@@ -24,18 +24,14 @@ public class Application {
             inputSplit = cal.splitCommon(input);
         }
 
-        int[] numberSplit = new int[inputSplit.length];
-        numberSplit = cal.convertIntArray(inputSplit);
+        int[] numberSplit = cal.convertIntArray(inputSplit);
         System.out.println("결과 : " + cal.add(numberSplit));
     }
 
     public static class Calculator {
         // 커스텀인지 아닌지 구별
         public boolean isCustom(String input){
-            if(input.startsWith("//")){
-                return true;
-            }
-            return false;
+            return input.startsWith("//");
         }
 
         //기본 구분자 처리
@@ -47,9 +43,12 @@ public class Application {
 
         // 커스텀 구분자 처리
         public String[] splitCustom(String input){
-            String[] parts = input.split("\\\\n"); // //; , 1;2;3
-            String delimiter = parts[0].substring(2); ;
+            String[] parts = input.split("\\\\n", 2); // /n을 기준으로 2개로 나눔
+            if(parts.length < 2){
+                throw new IllegalArgumentException();
+            }
 
+            String delimiter = parts[0].substring(2); ;
             String[] splitInput = parts[1].split(delimiter); //1,2,3
 
             return splitInput;
@@ -70,6 +69,11 @@ public class Application {
             int[] numbers = new int[input.length];
 
             for(int i=0; i<input.length; i++){
+                String value = input[i].trim();
+                if (value.isEmpty()) { //빈 칸 0처리
+                    numbers[i] = 0;
+                    continue;
+                }
 
                 try{
                     int n = Integer.parseInt(input[i]);
