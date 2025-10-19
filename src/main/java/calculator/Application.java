@@ -47,6 +47,16 @@ public class Application {
             return splitInput;
         }
 
+        //덧셈
+        public int add(int[] numbers){
+            int result = 0;
+            for(int n : numbers){
+                result += n;
+            }
+
+            return result;
+        }
+
 
     }
 }
